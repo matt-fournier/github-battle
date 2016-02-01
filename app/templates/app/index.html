@@ -45,7 +45,7 @@
         <div class="col-md-2">
         </div>
 
-        <div id='user1' class="col-md-3 user {% if data.total1 > data.total2 %}alert-success{% endif %}">
+        <div id='user1' class="col-md-3 user {% if data.star_count1 > data.star_count2 %}alert-success{% endif %}">
           <img src="{{ data.avatar1 }}" class="avatar img-circle">
           <h1>{{ data.username1 }}</h1>
           <h2>{{ data.repo1 }}</h2>
@@ -53,7 +53,7 @@
           <h3><span class="label label-default">Watch</span> {{ data.watch_count1 }}</h3>
           <h3><span class="label label-default">Forks</span> {{ data.forks1 }}</h3>
           <h2>Total: {{ data.total1 }}</h2>
-          {% if data.total1 > data.total2 %}
+          {% if data.star_count1 > data.star_count2 %}
             <br>
           <h1><stong>Winner</stong></h1>
           {% endif %}
@@ -64,7 +64,7 @@
           <h1>Tie</h1>
           {% endif %}
         </div>
-        <div id='user2' class="col-md-3 user {% if data.total2 > data.total1 %}alert-success{% endif %}">
+        <div id='user2' class="col-md-3 user {% if data.star_count2 > data.star_count1 %}alert-success{% endif %}">
           <img src="{{ data.avatar2 }}" class="avatar img-circle">
           <h1>{{ data.username2 }}</h1>
           <h2>{{ data.repo2 }}</h2>
@@ -72,7 +72,7 @@
           <h3><span class="label label-default">Watch</span> {{ data.watch_count2 }}</h3>
           <h3><span class="label label-default">Forks</span> {{ data.forks2 }}</h3>
           <h2>Total: {{ data.total2 }}</h2>
-          {% if data.total1 < data.total2 %}
+          {% if data.star_count1 < data.star_count2 %}
           <h1><stong>Winner</stong></h1>
           {% endif %}
         </div>
