@@ -1,0 +1,38 @@
+  body{
+    text-align: center;
+  }
+
+  .jumbotron{
+    font-family: "Lobster";
+  }
+  .container{
+    margin-bottom:50px;
+  }
+
+  .logo{
+   width: 150px;
+    height: 150px;
+    }
+
+  .btn-lg{
+    padding:10px;
+    margin: 40px;
+
+  }
+  .user{
+    margin:20px 0px 20px 0px;
+    padding-bottom: 20px;
+    border-radius: 25px;
+    font-family: "Roboto";
+  }
+  .avatar{
+    width: 150px;
+    height: 150px;
+    margin-top: 40px;
+  }
+.btn-start{
+    font-size: 1.5em;
+    margin: 20px;
+}
+
+

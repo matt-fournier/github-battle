@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+
+</head>
+<body>
+  <div class="jumbotron">
+    <img class="logo img-circle" src="{% static "app/img/box.png" %}"/>
+      <h1>Github Battle</h1>
+
+</div>
+{% if not data %}
+<div class="container text-center">
+    <form class="form-inline" id="form" method="post" action="/app/">
+      {% csrf_token %}
+
+    <div id="user1" class="col-md-6">
+      <h3>Player 1</h3>
+    </br>
+    <label> https://www.github.com/</label>
+    <input type="text" name="user_repo1" class="form-control" placeholder="username/repo" value="" required autofocus>
+    <br>
+    </div>
+
+    <div id="user2" class="col-md-6">
+      <h3>Player 2</h3>
+    </br>
+    <label> https://www.github.com/</label>
+    <input type="text" name="user_repo2" class="form-control" placeholder="username/repo" value="" required autofocus>
+    <br>
+    </div>
+      <button class="btn-lg btn-primary" type="submit">Fight!</button>  
+    </form>
+{% endif %}
+</div>
+{% if data %}
+        <div class="col-md-2">
+        </div>
+
+        <div id='user1' class="col-md-3 user {% if data.total1 > data.total2 %}alert-success{% endif %}">
+          <img src="{{ data.avatar1 }}" class="avatar img-circle">
+          <h1>{{ data.username1 }}</h1>
+          <h2>{{ data.repo1 }}</h2>
+          <h3><span class="label label-default">Stars</span> {{ data.star_count1 }}</h3>
+          <h3><span class="label label-default">Watch</span> {{ data.watch_count1 }}</h3>
+          <h3><span class="label label-default">Forks</span> {{ data.forks1 }}</h3>
+          <h2>Total: {{ data.total1 }}</h2>
+          {% if data.total1 > data.total2 %}
+            <br>
+          <h1><stong>Winner</stong></h1>
+          {% endif %}
+        </div>
+
+        <div class="col-md-2 tie">
+          {% if data.total1 = data.total2 %}
+          <h1>Tie</h1>
+          {% endif %}
+        </div>
+        <div id='user2' class="col-md-3 user {% if data.total2 > data.total1 %}alert-success{% endif %}">
+          <img src="{{ data.avatar2 }}" class="avatar img-circle">
+          <h1>{{ data.username2 }}</h1>
+          <h2>{{ data.repo2 }}</h2>
+          <h3><span class="label label-default">Stars</span> {{ data.star_count2 }}</h3>
+          <h3><span class="label label-default">Watch</span> {{ data.watch_count2 }}</h3>
+          <h3><span class="label label-default">Forks</span> {{ data.forks2 }}</h3>
+          <h2>Total: {{ data.total2 }}</h2>
+          {% if data.total1 < data.total2 %}
+          <h1><stong>Winner</stong></h1>
+          {% endif %}
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="footer col-md-12">
+          <div class="btn-start">
+          <a href="/app/" style="text-decoration:none">Start over</a>
+          </div>
+        </div>
+      </div>
+{% endif %}
+</body>
+
+</html>
