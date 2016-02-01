@@ -1,4 +1,3 @@
-# github-battle
 Django Github Battle app
 =============
 Compares the score of two Github projects.
