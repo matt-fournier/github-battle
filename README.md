@@ -6,8 +6,8 @@ Uses Django and the Github API
 Requirements
 ------------
 
-Django==1.9.1
-requests==2.9.1
+Django==1.9.1</br>
+requests==2.9.1</br>
 requests[security]
 
 Author
